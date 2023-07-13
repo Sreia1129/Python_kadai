@@ -18,7 +18,7 @@ def get_hash(password, salt):
     return hashed_password
 
 def insert_user(user_name, password):
-    sql = 'INSERT INTO user_sample VALUES(default, %s, %s, %s)'
+    sql = 'INSERT INTO book_user VALUES(default, %s, %s, %s)'
 
     salt = get_salt()
     hashed_password = get_hash(password, salt)
