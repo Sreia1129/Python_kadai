@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 style="text-align:center">図書検索機能です。</h1>
+  <form action="{{url_for('book_search_exe')}}" method="post">
+    <table border="1">
+      <tr>
+        <div style="text-align:center">
+        <td>検索したい図書名:
+        <input type="text" name="name">
+        <button type="submit">検索</button></td>
+        </div>
+    </tr>
+    </table>
+  </form>
+<a href="{{url_for('top')}}"class="btn btn-dark">戻る</a>
+{% endblock %}

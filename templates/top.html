@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>図書管理システム</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='/css/book.css')}}">
+</head>
+{% extends "layout.html" %}
+<body>
+{% block css %}
+<!-- なし -->
+{% endblock %}
+
+{% block content %}
+<div class="background">
+<font color="white"><h1 style="text-align:center">図書管理システムです。</h1></font>
+{% if msg != null %}
+<p style="color:blue">{{msg}}</p>
+{% endif %}
+<div style="text-align:center">
+  <p><a href="{{url_for('book_register')}}"class="btn btn-primary btn-warning">図書登録へ</a></p>
+  <p><a href="{{url_for('book_list')}}"class="btn btn-primary btn-danger">図書一覧へ</a></p>
+  <p><a href="{{url_for('book_delete')}}"class="btn btn-primary btn-success">図書削除へ</a></p>
+  <p><a href="{{url_for('book_search')}}"class="btn btn-primary btn-primary">図書検索へ</a></p>
+  <p><a href="{{url_for('index')}}"class="btn btn-primary btn-secondary">ログアウト</a></p>
+</div>
+{% endblock %}
+</div>
+</body>
+</html>

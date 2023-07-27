@@ -41,7 +41,7 @@ def insert_user(user_name, password):
     return count
 
 def login(user_name, password):
-    sql = 'SELECT hashed_password, salt FROM user_sample WHERE name = %s'
+    sql = 'SELECT hashed_password, salt FROM book_user WHERE name = %s'
     flg = False
 
     try :
@@ -70,3 +70,56 @@ def login(user_name, password):
         connection.close()
 
     return flg
+
+#図書登録
+def insert_book(name, author, publisher):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = 'INSERT INTO book VALUES(default, %s, %s, %s)'
+
+    cursor.execute(sql, (name, author, publisher))
+    count = cursor.rowcount # 更新件数を取得
+    connection.commit()
+    connection.close()
+    
+    return count
+    
+#図書一覧    
+def book_list():
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT id, name, author, publisher FROM book ORDER BY id ASC"
+    
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+    
+    cursor.close()
+    connection.close()
+    return rows
+
+# 図書削除
+def book_delete(name):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "DELETE FROM book WHERE name = %s"
+    
+    cursor.execute(sql, (name,))
+    connection.commit()
+    cursor.close()
+    connection.close()
+    
+# 図書検索
+def book_search(name):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT * FROM book WHERE name LIKE %s"
+
+    pattern = f"%{name}%"
+    cursor.execute(sql, (pattern,))
+    book = cursor.fetchall()
+    
+    connection.commit()
+    cursor.close()
+    connection.close()
+    
+    return book

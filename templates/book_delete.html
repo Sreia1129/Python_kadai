@@ -1,0 +1,20 @@
+{% extends "layout.html"%}
+{% block content %}
+<div class = 'book_delete'>
+<h1 style="text-align:center">図書削除機能です。</h1>
+  <form action="{{url_for('book_delete_exe')}}" method="post">
+    <div style="text-align:center">
+    <form>
+    <table border="1">
+        <tr>
+            <td>消したい本のタイトル:
+            <input type="text" name="name" value="{{name}}">
+            <input type="submit" value="削除"></td>
+        </tr>
+    </table>
+    </form>
+  </div>
+    </form>
+  <a href="{{url_for('top')}}"class="btn btn-dark">戻る</a>
+
+{% endblock%}

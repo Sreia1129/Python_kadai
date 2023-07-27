@@ -1,0 +1,23 @@
+{% extends "layout.html"%}
+
+
+{% block content %}
+<div class = 'book_register'>
+  <h1 style="text-align:center">図書登録機能です。</h1>
+  <h3 style="text-align:center">図書の情報を入力してください。</h3>
+  <div style="text-align:center">
+  {% if error != null %}
+  <p style="color:red">{{error}}</p>
+  {% endif %}
+  <div style="text-align:center">
+  <form action="{{url_for('book_register_exe')}}" method="post">
+    タイトル:<input type="text" name="name" value="{{name}}"><br>
+    作者:<input type="text" name="author" value="{{author}}"><br>
+    出版社:<input type="text" name="publisher" value="{{publisher}}"><br>
+    <button type="submit" class="btn btn-info">登録</button>
+  </form>
+</div>
+<div style="text-align:left">
+  <a href="{{url_for('top')}}"class="btn btn-dark">戻る</a>
+</div>
+{% endblock%}

@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>図書システム</title>
 </head>
-<body>
-  <h3>ユーザ登録画面</h3>
+<body style="background-color:rgb(245, 222, 179)">
+  <h1 style="text-align:center">ユーザ登録画面</h1>
+  <div style="text-align:center">
   {% if error != null %}
-    <p style="color:red">{{error}}</p>
+  <p style="color:red">{{error}}</p>
   {% endif %}
+  </div>
+  <div style="text-align:center">
   <form action="{{url_for('register_exe')}}" method="post">
     ユーザ名:<input type="text" name="username" value="{{user_name}}"><br>
     パスワード：<input type="password" name="password" value="{{password}}"><br>
     <button type="submit">登録</button>
   </form>
+</div>
+  <a href="{{url_for('index')}}">戻る</a>
 </body>
 </html>

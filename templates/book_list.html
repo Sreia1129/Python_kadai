@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h1 style="text-align:center">図書一覧機能です。</h1>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>出版社</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book[0] }}</td>
+            <td>{{ book[1] }}</td>
+            <td>{{ book[2] }}</td>
+            <td>{{ book[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{url_for('top')}}"class="btn btn-dark">戻る</a>
+{% endblock %}
